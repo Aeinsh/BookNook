@@ -1,12 +1,12 @@
-name: Deploy TypeScript to GitHub Pages
+name: Build TypeScript & Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Runs this workflow when you push to the main branch
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,12 +18,30 @@ jobs:
         with:
           node-version: 18
 
-     - name: Install Dependencies (Fix ERESOLVE)
-  run: npm install --legacy-peer-deps
-
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps  # Fixes dependency issues
 
       - name: Build TypeScript
-        run: npm run build
+        run: npm run build  # This will generate the "dist/" folder
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
