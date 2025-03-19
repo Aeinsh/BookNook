@@ -3,7 +3,7 @@ name: Deploy TypeScript to GitHub Pages
 on:
   push:
     branches:
-      - main  # Runs this workflow when you push to the main branch
+      - main
 
 jobs:
   build-deploy:
@@ -11,21 +11,21 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4  # Updated to latest version
+        uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v4  # Updated to latest version
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
       - name: Install Dependencies (Fix ERESOLVE)
-        run: npm install --legacy-peer-deps  # Ensures all dependencies install correctly
+        run: npm install --legacy-peer-deps
 
       - name: Build TypeScript
-        run: npm run build  # This will generate the "dist/" folder
+        run: npm run build  # This will generate "dist/main.js"
 
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4  # Updated version
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist/
@@ -36,10 +36,10 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4  # Updated version
+        uses: actions/checkout@v4
 
       - name: Download Build Artifacts
-        uses: actions/download-artifact@v4  # Updated version
+        uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist/
