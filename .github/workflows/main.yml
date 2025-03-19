@@ -3,7 +3,7 @@ name: Deploy TypeScript to GitHub Pages
 on:
   push:
     branches:
-      - main  # Run this workflow when you push to the main branch
+      - main
 
 jobs:
   build-deploy:
@@ -21,11 +21,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build TypeScript Project
-        run: npm run build  # This will generate the "dist/" folder
+      - name: Build TypeScript
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist  # Deploy the built files from "dist/" to GitHub Pages
+          folder: dist
