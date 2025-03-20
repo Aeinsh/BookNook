@@ -1,10 +1,20 @@
 {
+  "`:
+
+```json
+{
   "dependencies": {
+    "react": "^18dependencies": {
     "react": "^18.0.0",
+    "react-dom.0.0",
     "react-dom": "^18.0.0"
   },
+  "devDependencies": "^18.0.0"
+  },
   "devDependencies": {
+    "vite": {
     "vite": "^5.4.5",
+    "@vitejs/plugin-react": "^5.4.5",
     "@vitejs/plugin-react": "^4.0.0",
     "typescript": "^5.3.3"
   }
