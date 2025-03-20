@@ -3,12 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/BookNook/", // 🔥 Change "BookNook" to your actual GitHub repo name
-  build: {
-    outDir: "dist",
-    emptyOutDir: true,
-    rollupOptions: {
-      input: "index.html",
-    },
-  },
+  base: "/BookNook/" // ✅ Update this to match your GitHub repo name
 });
