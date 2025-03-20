@@ -16,10 +16,10 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
 
       - name: Install Dependencies (Fix ERESOLVE)
-        run: npm install --force
+        run: npm install --legacy-peer-deps
 
       - name: Build TypeScript
         run: npm run build  # This will generate "dist/main.js"
