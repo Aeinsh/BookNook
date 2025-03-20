@@ -24,8 +24,14 @@ jobs:
       - name: Build TypeScript
         run: npm run build || echo "Build failed!"
 
-      - name: Check for dist/
-        run: ls -la dist || echo "dist/ folder missing!"
+      - name: Verify `dist/` Exists
+        run: |
+          if [ -d "dist" ]; then
+            echo "dist/ exists"
+          else
+            echo "dist/ not found!"
+            exit 1
+          fi
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
