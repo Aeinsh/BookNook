@@ -14,8 +14,11 @@ jobs:
 
       # Other steps...
 
+      - name: Verify artifact existence
+        run: ls -al path/to/artifact
+
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: path/to/artifact
+          path: path/to/artifact  # Adjust this path as needed
