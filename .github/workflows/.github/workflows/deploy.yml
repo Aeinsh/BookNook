@@ -3,7 +3,7 @@ name: Deploy Vite App to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main
 
 permissions:
   contents: read
@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Node
@@ -22,13 +22,13 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install deps
         run: npm install
 
-      - name: Build the project
+      - name: Build
         run: npm run build
 
-      - name: Upload GitHub Pages artifact
+      - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: dist
